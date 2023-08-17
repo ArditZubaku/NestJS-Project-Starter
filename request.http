@@ -1,0 +1,34 @@
+@host= http://localhost:3000
+
+# Replace these
+@authToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2OTIyMzM5OTMsImV4cCI6MTY5MjIzNDg5M30.Z7af3639sfmPHYL7S_2LfplJNiDeIfD-GSyKaldXQRA
+@rtToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2OTIyMzQwNjcsImV4cCI6MTY5MjgzODg2N30.xWLgjMQ7yTWxqslu4kDGFrvEuiRPwkX1E7x-H_kxEyk
+
+POST {{host}}/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "Name",
+    "lastName": "LastName",
+    "email": "test@gmail.com",
+    "password": "Qwer1234"
+}
+
+###
+
+# @name login
+POST {{host}}/auth/signin
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "Qwer1234"
+}
+
+###
+POST {{host}}/auth/logout
+Authorization: Bearer {{authToken}}
+
+###
+POST {{host}}/auth/refresh
+Authorization: Bearer {{rtToken}}
